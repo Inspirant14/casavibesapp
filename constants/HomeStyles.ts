@@ -16,14 +16,14 @@ export const styles = StyleSheet.create({
   },
   
   
-  categoryBox: {
-    backgroundColor: '#ececec',
-    padding: 15,
-    borderRadius: 12,
-    flex: 1,
-    marginHorizontal: 5,
-    alignItems: 'center',
-  },
+  // categoryBox: {
+  //   backgroundColor: '#ececec',
+  //   padding: 15,
+  //   borderRadius: 12,
+  //   flex: 1,
+  //   marginHorizontal: 5,
+  //   alignItems: 'center',
+  // },
   categoryText: {
     fontWeight: 'bold',
   },

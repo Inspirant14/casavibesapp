@@ -4,7 +4,7 @@ import { Carte } from '../../components/Carte';
 import { RestaurantCard } from '../../components/RestaurantCard';
 import { styles } from '../../constants/HomeStyles';
 import { RestaurantPreview } from '../../components/RestaurantPreview';
-import { SearchBar } from '@/components/searchBar';
+import { SearchBar } from '@/components/SearchBar';
 import { Categorie } from '@/components/Categorie';
 import { HorizontalRestaurantSlider } from '../../components/HorizontalRestaurantSlider';
 

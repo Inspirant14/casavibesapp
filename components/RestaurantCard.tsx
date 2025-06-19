@@ -1,21 +1,34 @@
+import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
-import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
 
 export function RestaurantCard({ item }: { item: any }) {
   const router = useRouter();
+  const [favorites, setFavorites] = useState<string[]>([]);
+  
+  const isFav = favorites.includes(item.id);
 
   const handlePress = () => {
-    router.push({
-      pathname: '/restaurants/[id]',
-      params: { id: item.id }, // ← Passer l’ID du restaurant
-    });
+    router.push(`/restaurants/${item.id}`);
+  };
+
+  const toggleFavorite = () => {
+    setFavorites(prev =>
+      prev.includes(item.id)
+        ? prev.filter(favId => favId !== item.id)
+        : [...prev, item.id]
+    );
   };
 
   return (
     <TouchableOpacity onPress={handlePress} style={styles.card}>
-      {/* Image avec étoile */}
       <View>
         <Image source={item.image} style={styles.image} />
         <View style={styles.ratingBox}>
@@ -24,16 +37,20 @@ export function RestaurantCard({ item }: { item: any }) {
         </View>
       </View>
 
-      {/* Enregistrer */}
-      <TouchableOpacity style={styles.saveIcon} onPress={() => alert('Enregistré !')}>
-        <Ionicons name="bookmark" size={24} color="red" />
+      {/* Le cœur reste à la position "saveIcon" */}
+      <TouchableOpacity onPress={toggleFavorite} style={styles.saveIcon}>
+        <Ionicons
+          name={isFav ? 'heart' : 'heart-outline'}
+          size={24}
+          color={isFav ? 'red' : '#666'}
+        />
       </TouchableOpacity>
 
-      {/* Infos */}
+      {/* Informations */}
       <View style={styles.infoContainer}>
         <Text style={styles.name}>{item.title}</Text>
         <View style={styles.locationContainer}>
-          <Ionicons name="location-outline" size={16} color="#666" style={{ marginRight: 4 }} />
+          <Ionicons name="location-outline" size={16} color="#666" />
           <Text style={styles.location}>{item.location}</Text>
         </View>
       </View>
@@ -57,8 +74,8 @@ const styles = StyleSheet.create({
   image: {
     width: 230,
     height: 130,
-    borderRadius: 20,
-    margin:10,
+    margin: 10,
+    borderRadius: 10,
   },
   ratingBox: {
     position: 'absolute',
@@ -90,14 +107,13 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 16,
   },
+  locationContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginTop: 4,
+  },
   location: {
     color: '#666',
     fontSize: 14,
-    marginTop: 4,
   },
- locationContainer: {
-  flexDirection: 'row',
-  alignItems: 'center',
-},
-
 });

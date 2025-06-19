@@ -14,6 +14,6 @@ import { StyleSheet, TextInput } from 'react-native';
     padding: 10,
     borderRadius: 10,
     marginBottom: 20,
-    borderColor: ,
+    // borderColor: ,
   },
   })

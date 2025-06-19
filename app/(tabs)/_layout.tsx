@@ -11,28 +11,28 @@ export default function Layout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Explorer',
-          tabBarIcon: ({ color }) => <Ionicons name="search" size={24} color={color} />,
+          title: 'Home',
+          tabBarIcon: ({ color }) => <Ionicons name="home" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="explore"
         options={{
-          title: 'Explorer',
-          tabBarIcon: ({ color }) => <Ionicons name="search" size={24} color={color} />,
+          title: 'Reservation',
+          tabBarIcon: ({ color }) => <Ionicons name="calendar" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="favoris"
         options={{
-          title: 'Profil',
+          title: 'Favoris',
           tabBarIcon: ({ color }) => <Ionicons name="heart" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="profile"
         options={{
-          title: 'Profil',
+          title: 'Profile',
           tabBarIcon: ({ color }) => <Ionicons name="person" size={24} color={color} />,
         }}
       />

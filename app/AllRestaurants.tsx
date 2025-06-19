@@ -1,11 +1,11 @@
 // screens/AllRestaurants.tsx
-import React from 'react';
-import { FlatList, Image, StyleSheet, Text, View } from 'react-native';
 import { HorizontalRestaurantSlider } from '@/components/HorizontalRestaurantSlider';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 // import { otherRestaurants } from '../constants/data/restaurants';
 // import { Ionicons } from '@expo/vector-icons';
+import { SearchBar } from '@/components/SearchBar';
 import { RestaurantList } from '../components/RestaurantList';
-import { SearchBar } from '@/components/searchBar';
 
 
 
