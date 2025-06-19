@@ -28,7 +28,7 @@ export default function RestaurantDetail() {
     );
   }
 
-  const { width, height } = Dimensions.get('window');
+  const { height } = Dimensions.get('window');
   const IMAGE_HEIGHT = height * 0.4;
 
   return (

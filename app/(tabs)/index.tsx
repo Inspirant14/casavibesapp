@@ -1,7 +1,7 @@
 // import React, { useEffect, useRef, useState } from 'react';
 import { Image, Text, ScrollView } from 'react-native';
 import { Carte } from '../../components/Carte';
-import { RestaurantCard } from '../../components/RestaurantCard';
+
 import { styles } from '../../constants/HomeStyles';
 import { RestaurantPreview } from '../../components/RestaurantPreview';
 import { SearchBar } from '@/components/SearchBar';
