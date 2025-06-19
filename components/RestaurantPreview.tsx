@@ -4,11 +4,13 @@ import React, { useState } from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { topRestaurants } from '../constants/data/restaurants';
 
+
 export const RestaurantPreview: React.FC = () => {
   const router = useRouter();
   const [favorites, setFavorites] = useState<string[]>([]); // IDs favoris
 
   const previewRestaurants = topRestaurants.slice(0, 3);
+  
 
   const toggleFavorite = (id: string) => {
     setFavorites(prev =>
@@ -23,23 +25,28 @@ export const RestaurantPreview: React.FC = () => {
       <Text style={styles.heading}>Restaurants populaires</Text>
 
       {previewRestaurants.map(item => {
-        const isFav = favorites.includes(item.id);
-        return (
-          <View key={item.id} style={styles.card}>
-            <Image source={item.image} style={styles.image} />
+  const isFav = favorites.includes(item.id);
+  return (
+    <TouchableOpacity
+      key={item.id}
+      style={styles.card}
+      onPress={() => router.push(`/restaurants/${item.id}`)} // navigation ici
+    >
+      <Image source={item.image} style={styles.image} />
 
-            <View style={styles.textBox}>
-              <Text style={styles.title}>{item.title}</Text>
-              <Ionicons name="location-outline" size={16} color="#666" style={{ marginRight: 4 }} />
-              <Text style={styles.location}>{item.location}</Text>
-            </View>
+      <View style={styles.textBox}>
+        <Text style={styles.title}>{item.title}</Text>
+        <Ionicons name="location-outline" size={16} color="#666" style={{ marginRight: 4 }} />
+        <Text style={styles.location}>{item.location}</Text>
+      </View>
 
-            <TouchableOpacity onPress={() => toggleFavorite(item.id)} style={styles.favoriteButton}>
-              <Ionicons name={isFav ? 'heart' : 'heart-outline'} size={24} color={isFav ? 'red' : '#666'} />
-            </TouchableOpacity>
-          </View>
-        );
-      })}
+      <TouchableOpacity onPress={() => toggleFavorite(item.id)} style={styles.favoriteButton}>
+        <Ionicons name={isFav ? 'heart' : 'heart-outline'} size={24} color={isFav ? 'red' : '#666'} />
+      </TouchableOpacity>
+    </TouchableOpacity>
+  );
+})}
+
 
       <TouchableOpacity onPress={() => router.push('/AllRestaurants')}>
         <Text style={styles.seeMore}>Voir plus</Text>

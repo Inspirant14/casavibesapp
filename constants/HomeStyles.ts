@@ -3,12 +3,12 @@ import { StyleSheet } from 'react-native';
 // const { width } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 20,
-    backgroundColor: 'gray',
+  // container: {
+  //   flex: 1,
+  //   padding: 20,
+  //   backgroundColor: 'green',
     
-  },
+  // },
   title: {
     fontSize: 18,
     textAlign: 'center',

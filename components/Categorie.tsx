@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginVertical: 10,
     borderRadius: 12,
-    // backgroundColor: '#f0f0f0',
+    // backgroundColor: 'green',
     width: '100%',
   },
   categoryBox: {

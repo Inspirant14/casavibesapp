@@ -12,8 +12,9 @@ export default function LogoHeader() {
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    margin: 10,
+    margin: 0,
     padding: 5,
+    backgroundColor:'gray',
   },
   logo: {
     width: 150,

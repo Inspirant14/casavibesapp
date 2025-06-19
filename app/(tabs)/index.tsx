@@ -18,7 +18,7 @@ import { HorizontalRestaurantSlider } from '../../components/HorizontalRestauran
 export default function HomeScreen() {
   
   return (
-    <ScrollView style={styles.container}>
+    <ScrollView >
       
 
       {/* Texte d'accueil */}

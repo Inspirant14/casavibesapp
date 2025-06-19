@@ -13,6 +13,7 @@ import {
 } from 'react-native';
 import { topRestaurants, otherRestaurants, Restaurant } from '../../constants/data/restaurants';
 
+
 export default function RestaurantDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();
   const router = useRouter();
@@ -33,6 +34,7 @@ export default function RestaurantDetail() {
 
   return (
     <View style={styles.container}>
+      
       <ImageBackground source={restaurant.image} style={{margin:10 ,width:390, height: IMAGE_HEIGHT, }}>
         <View style={styles.overlay} />
         <View style={styles.header}>
@@ -65,7 +67,7 @@ export default function RestaurantDetail() {
 }
 
 const styles = StyleSheet.create({
-  container: { flex: 1, backgroundColor: 'red' },
+  container: { flex: 1,  },
   center: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   overlay: {
     ...StyleSheet.absoluteFillObject,

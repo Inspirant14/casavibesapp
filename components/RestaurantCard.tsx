@@ -70,6 +70,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5,
     overflow: 'hidden',
+    marginBottom:10,
   },
   image: {
     width: 230,
