@@ -27,5 +27,6 @@ const styles = StyleSheet.create({
   map: {
     width: 370,
     height: 300, // plus pratique qu'un plein écran ici
+    borderRadius: 20,
   },
 });

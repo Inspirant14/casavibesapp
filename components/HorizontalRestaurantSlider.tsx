@@ -2,30 +2,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FlatList } from 'react-native';
 import { RestaurantCard } from './RestaurantCard';
+import { topRestaurants } from '../constants/data/restaurants';
 
-const topRestaurants = [
-  {
-    id: '1',
-    title: 'Le Gourmet',
-    location: 'Centre-ville, Casablanca',
-    rating: 4.8,
-    image: require('../assets/images/tof.jpg'),
-  },
-  {
-    id: '2',
-    title: 'Casa Délices',
-    location: 'Maarif, Casablanca',
-    rating: 4.6,
-    image: require('../assets/images/tof.jpg'),
-  },
-  {
-    id: '3',
-    title: 'Le Patio',
-    location: 'Anfa, Casablanca',
-    rating: 4.9,
-    image: require('../assets/images/tof.jpg'),
-  },
-];
+
 
 export const HorizontalRestaurantSlider: React.FC = () => {
   const flatListRef = useRef<FlatList>(null);

@@ -1,31 +1,11 @@
 // components/RestaurantPreview.tsx
+import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React from 'react';
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { Image, StyleSheet, Text, TouchableOpacity, View, } from 'react-native';
+import { topRestaurants } from '../constants/data/restaurants';
 
-const topRestaurants = [
-  {
-    id: '1',
-    title: 'Le Gourmet',
-    location: 'Centre-ville, Casablanca',
-    rating: 4.8,
-    image: require('../assets/images/tof.jpg'),
-  },
-  {
-    id: '2',
-    title: 'Casa Délices',
-    location: 'Maarif, Casablanca',
-    rating: 4.6,
-    image: require('../assets/images/tof.jpg'),
-  },
-  {
-    id: '3',
-    title: 'Le Patio',
-    location: 'Anfa, Casablanca',
-    rating: 4.9,
-    image: require('../assets/images/tof.jpg'),
-  },
-];
+
 
 export const RestaurantPreview: React.FC = () => {
   const router = useRouter();
@@ -41,6 +21,7 @@ export const RestaurantPreview: React.FC = () => {
           <Image source={item.image} style={styles.image} />
           <View style={styles.textBox}>
             <Text style={styles.title}>{item.title}</Text>
+            <Ionicons name="location-outline" size={16} color="#666" style={{ marginRight: 4 }} />
             <Text style={styles.location}>{item.location}</Text>
           </View>
         </View>

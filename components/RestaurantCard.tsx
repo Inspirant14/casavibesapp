@@ -1,11 +1,21 @@
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
 export function RestaurantCard({ item }: { item: any }) {
+  const router = useRouter();
+
+  const handlePress = () => {
+    router.push({
+      pathname: '/restaurants/[id]',
+      params: { id: item.id }, // ← Passer l’ID du restaurant
+    });
+  };
+
   return (
-    <View style={styles.card}>
-      {/* Image avec étoile en haut à gauche */}
+    <TouchableOpacity onPress={handlePress} style={styles.card}>
+      {/* Image avec étoile */}
       <View>
         <Image source={item.image} style={styles.image} />
         <View style={styles.ratingBox}>
@@ -14,7 +24,7 @@ export function RestaurantCard({ item }: { item: any }) {
         </View>
       </View>
 
-      {/* Bouton Enregistrer */}
+      {/* Enregistrer */}
       <TouchableOpacity style={styles.saveIcon} onPress={() => alert('Enregistré !')}>
         <Ionicons name="bookmark" size={24} color="red" />
       </TouchableOpacity>
@@ -22,16 +32,18 @@ export function RestaurantCard({ item }: { item: any }) {
       {/* Infos */}
       <View style={styles.infoContainer}>
         <Text style={styles.name}>{item.title}</Text>
-        <Ionicons name="location-outline" size={16} color="#666" style={{ marginRight: 4 }} />
-        <Text style={styles.location}>{item.location}</Text>
+        <View style={styles.locationContainer}>
+          <Ionicons name="location-outline" size={16} color="#666" style={{ marginRight: 4 }} />
+          <Text style={styles.location}>{item.location}</Text>
+        </View>
       </View>
-    </View>
+    </TouchableOpacity>
   );
 }
 
 const styles = StyleSheet.create({
   card: {
-    backgroundColor: '#fff',
+    backgroundColor: 'white',
     borderRadius: 15,
     marginRight: 15,
     width: 250,
@@ -43,8 +55,10 @@ const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   image: {
-    width: '100%',
+    width: 230,
     height: 130,
+    borderRadius: 20,
+    margin:10,
   },
   ratingBox: {
     position: 'absolute',
