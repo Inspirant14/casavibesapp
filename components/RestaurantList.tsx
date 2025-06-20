@@ -1,8 +1,8 @@
 // components/RestaurantList.tsx
-import React, { useState } from 'react';
-import { FlatList, View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { otherRestaurants } from '../constants/data/restaurants';
 
 export const RestaurantList: React.FC = () => {
@@ -10,7 +10,7 @@ export const RestaurantList: React.FC = () => {
   const [favorites, setFavorites] = useState<string[]>([]);
 
   const handlePress = (id: string) => {
-    router.push(`/restaurants/${id}`);
+    router.push(`/restaurants/${id}/details`);
   };
 
   const toggleFavorite = (id: string) => {

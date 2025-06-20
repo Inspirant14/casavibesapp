@@ -16,7 +16,7 @@ export function RestaurantCard({ item }: { item: any }) {
   const isFav = favorites.includes(item.id);
 
   const handlePress = () => {
-    router.push(`/restaurants/${item.id}`);
+    router.push(`/restaurants/${item.id}/details`);
   };
 
   const toggleFavorite = () => {

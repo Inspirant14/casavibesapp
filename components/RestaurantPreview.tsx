@@ -30,7 +30,7 @@ export const RestaurantPreview: React.FC = () => {
     <TouchableOpacity
       key={item.id}
       style={styles.card}
-      onPress={() => router.push(`/restaurants/${item.id}`)} // navigation ici
+      onPress={() => router.push(`/restaurants/${item.id}/details`)} // navigation ici
     >
       <Image source={item.image} style={styles.image} />
 

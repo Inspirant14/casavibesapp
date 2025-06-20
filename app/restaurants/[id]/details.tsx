@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { topRestaurants, otherRestaurants, Restaurant } from '../../constants/data/restaurants';
+import { topRestaurants, otherRestaurants, Restaurant } from '@/constants/data/restaurants';
 
 
 export default function RestaurantDetail() {
@@ -43,7 +43,7 @@ export default function RestaurantDetail() {
           </TouchableOpacity>
           <Text style={styles.headerTitle}>Détails</Text>
           <TouchableOpacity onPress={() => alert('Enregistré !')} style={styles.iconButton}>
-            <Ionicons name="bookmark" size={28} color="#fff" />
+            <Ionicons name="heart" size={28} color="#fff" />
           </TouchableOpacity>
         </View>
       </ImageBackground>
@@ -59,7 +59,8 @@ export default function RestaurantDetail() {
         <Text style={styles.description}>{restaurant.description}</Text>
       </ScrollView>
 
-      <TouchableOpacity style={styles.reserveButton} onPress={() => alert('Réservation !')}>
+      <TouchableOpacity style={styles.reserveButton}
+          onPress={() => router.push(`/restaurants/${id}/reserve`)}>
         <Text style={styles.reserveButtonText}>Réservation</Text>
       </TouchableOpacity>
     </View>
@@ -99,12 +100,22 @@ const styles = StyleSheet.create({
   locationText: { color: '#666', fontSize: 16 },
   sectionTitle: { fontSize: 20, fontWeight: '600', marginBottom: 6 },
   description: { fontSize: 16, color: '#444', lineHeight: 22 },
-  reserveButton: {
+  // reserveButton: {
+  //   backgroundColor: '#00aaff',
+  //   padding: 16,
+  //   margin: 16,
+  //   borderRadius: 10,
+  //   alignItems: 'center',
+  // },
+  reserveButtonText: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
+   reserveButton: {
     backgroundColor: '#00aaff',
     padding: 16,
-    margin: 16,
-    borderRadius: 10,
+    borderRadius: 40,
+    // marginTop: 20,
+    marginBottom: 40,
     alignItems: 'center',
+    width: '90%',
+    margin: 20,
   },
-  reserveButtonText: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
 });
