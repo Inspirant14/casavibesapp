@@ -1,26 +1,53 @@
-// components/SearchBar.tsx
-import React from 'react';
-import { StyleSheet, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, TextInput, TouchableOpacity, View } from 'react-native';
+import { Ionicons } from '@expo/vector-icons';
 
-export function SearchBar() {
+interface Props {
+  onSearch: (text: string) => void;
+}
+
+export function SearchBar({ onSearch }: Props) {
+  const [input, setInput] = useState('');
+
+  const handlePress = () => {
+    onSearch(input);
+  };
+
   return (
-    <TextInput
-      placeholder="Rechercher..."
-      style={styles.searchBar}
-      underlineColorAndroid="transparent" // Désactive la bordure native sur Android
-    />
+    <View style={styles.container}>
+      <TextInput
+        placeholder="Restaurants, Concerts, Activités..."
+        style={styles.input}
+        value={input}
+        onChangeText={setInput}
+        underlineColorAndroid="transparent"
+        returnKeyType="search"
+        onSubmitEditing={handlePress}
+      />
+      <TouchableOpacity onPress={handlePress} style={styles.iconContainer}>
+        <Ionicons name="search" size={24} color="rgba(252, 117, 7, 1)" />
+      </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  searchBar: {
-    // backgroundColor: 'red',
-    // width:'90%',
-    margin:10,
+  container: {
+    flexDirection: 'row',
+    margin: 10,
+    marginHorizontal: 20,
+    borderRadius: 30,
+    borderWidth: 1,
+    borderColor: 'rgba(252, 117, 7, 1)',
+    alignItems: 'center',
+    height: 50,
+  },
+  input: {
+    flex: 1,
+    paddingHorizontal: 16,
+    fontSize: 16,
+  },
+  iconContainer: {
     padding: 10,
-    borderRadius: 20,
-    marginBottom: 0,
-    borderWidth: 1,            // 🟦 largeur de la bordure
-    borderColor: '#ccc',       // 🟦 couleur de la bordure
   },
 });

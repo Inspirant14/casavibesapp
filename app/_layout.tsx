@@ -24,7 +24,7 @@ export default function RootLayout() {
       <Stack
         screenOptions={{
           headerShown: false,
-          contentStyle: { backgroundColor: 'violet' }, // fond pour toutes les pages
+          contentStyle: { backgroundColor: '#D7DCE1' }, // fond pour toutes les pages
         }}
       >
         {/* Onglets */}

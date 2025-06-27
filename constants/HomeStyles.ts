@@ -1,5 +1,5 @@
 
-import { StyleSheet } from 'react-native';
+import { StyleSheet} from 'react-native';
 // const { width } = Dimensions.get('window');
 
 export const styles = StyleSheet.create({
@@ -10,11 +10,28 @@ export const styles = StyleSheet.create({
     
   // },
   title: {
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: 'bold',
+    margin: 16,
     textAlign: 'center',
-    marginBottom: 10,
+    color: '#333',
+  },
+
+  minititle: {
+    fontSize: 20,
+    textAlign: 'center',
+    marginBottom: 5,
+    
   },
   
+  minititleleft: {
+    fontSize: 20,
+    textAlign: 'left',
+    marginBottom: 5,
+    marginLeft:5,
+    
+    
+  },
   
   // categoryBox: {
   //   backgroundColor: '#ececec',

@@ -1,10 +1,10 @@
 // components/HorizontalRestaurantSlider.tsx
+import { Activite } from '@/constants/data/restaurants';
 import React, { useEffect, useRef, useState } from 'react';
 import { FlatList } from 'react-native';
-import { RestaurantCard } from './RestaurantCard';
-import { Restaurant } from '@/constants/data/restaurants';
+import { ActiviteCard } from './ActiviteCard';
 
-// interface Restaurant {
+// interface Activite {
 //   id: string;
 //   title: string;
 //   location: string;
@@ -14,17 +14,17 @@ import { Restaurant } from '@/constants/data/restaurants';
 // }
 
 interface Props {
-  data: Restaurant[];
+  data: Activite[];
   autoScroll?: boolean;
   scrollInterval?: number;
 }
 
-export const HorizontalRestaurantSlider: React.FC<Props> = ({
+export const HorizontalActiviteSlider: React.FC<Props> = ({
   data,
   autoScroll = true,
   scrollInterval = 5000,
 }) => {
-  const flatListRef = useRef<FlatList<Restaurant>>(null);
+  const flatListRef = useRef<FlatList<Activite>>(null);
   const [index, setIndex] = useState(0);
 
   useEffect(() => {
@@ -46,7 +46,7 @@ export const HorizontalRestaurantSlider: React.FC<Props> = ({
       keyExtractor={(item) => item.id}
       horizontal
       showsHorizontalScrollIndicator={false}
-      renderItem={({ item }) => <RestaurantCard item={item} />}
+      renderItem={({ item }) => <ActiviteCard item={item} />}
     />
   );
 };

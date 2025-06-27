@@ -1,19 +1,19 @@
-import { HorizontalRestaurantSlider } from '@/components/HorizontalRestaurantSlider';
+import { HorizontalActiviteSlider } from '@/components/HorizontalActiviteSlider';
 import { SearchBar } from '@/components/SearchBar';
-import { topRestaurants } from '@/constants/data/restaurants';
+import { topActivites } from '@/constants/data/restaurants';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { RestaurantList } from '../components/RestaurantList';
+import { ActiviteList } from '../components/ActiviteList';
 
-export default function AllRestaurants() {
+export default function AllActivites() {
   const [searchTerm, setSearchTerm] = useState('');
 
   // Fonction de filtrage
-  const matchesSearch = (restaurant: { title: string; location: string }) =>
-    restaurant.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    restaurant.location.toLowerCase().includes(searchTerm.toLowerCase());
+  const matchesSearch = (activite: { title: string; location: string }) =>
+    activite.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    activite.location.toLowerCase().includes(searchTerm.toLowerCase());
 
-  const filteredRestaurants = topRestaurants.filter(matchesSearch);
+  const filteredActivites = topActivites.filter(matchesSearch);
 
   return (
     <View style={styles.container}>
@@ -22,10 +22,10 @@ export default function AllRestaurants() {
       <SearchBar onSearch={setSearchTerm} />
 
       <Text style={styles.title}>À la une</Text>
-      <HorizontalRestaurantSlider data={filteredRestaurants} />
+      <HorizontalActiviteSlider data={filteredActivites} />
 
       <Text style={styles.title}>RESTAURANTS</Text>
-      <RestaurantList data={filteredRestaurants} />
+      <ActiviteList data={filteredActivites} />
     </View>
   );
 }

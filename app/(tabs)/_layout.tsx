@@ -11,8 +11,10 @@ export default function Layout() {
       <Tabs
         screenOptions={{
           headerShown: false,
-          sceneStyle: { backgroundColor: 'violet' },  // ✅ fond des écrans
-          tabBarStyle: { backgroundColor: 'green' },   // ✅ fond de la barre d’onglets
+          sceneStyle: { backgroundColor: '#D7DCE1' },  // ✅ fond des écrans
+          tabBarStyle: { backgroundColor: 'white' },   // ✅ fond de la barre d’onglets
+          tabBarActiveTintColor: 'rgb(255,115,0)',
+          
         }}
       >
         <Tabs.Screen

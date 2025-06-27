@@ -1,11 +1,19 @@
-// components/RestaurantList.tsx
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React, { useState } from 'react';
 import { FlatList, Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { otherRestaurants } from '../constants/data/restaurants';
 
-export const RestaurantList: React.FC = () => {
+// 👇 Accepte la prop `data`
+interface Props {
+  data: {
+    id: string;
+    title: string;
+    location: string;
+    image: any;
+  }[];
+}
+
+export const RestaurantList: React.FC<Props> = ({ data }) => {
   const router = useRouter();
   const [favorites, setFavorites] = useState<string[]>([]);
 
@@ -23,7 +31,7 @@ export const RestaurantList: React.FC = () => {
 
   return (
     <FlatList
-      data={otherRestaurants}
+      data={data} // 👈 Utilise maintenant les données passées
       keyExtractor={(item) => item.id}
       renderItem={({ item }) => {
         const isFav = favorites.includes(item.id);

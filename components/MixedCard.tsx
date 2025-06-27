@@ -1,23 +1,33 @@
+// components/MixedCard.tsx
 import React, { useState } from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import {
   Image,
-  ImageBackground,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
+import { EventItem } from '@/constants/data/restaurants';
 
-export function RestaurantCard({ item }: { item: any }) {
+interface Props {
+  item: EventItem;
+}
+
+export function MixedCard({ item }: Props) {
   const router = useRouter();
   const [favorites, setFavorites] = useState<string[]>([]);
-  
   const isFav = favorites.includes(item.id);
 
   const handlePress = () => {
-    router.push(`/restaurants/${item.id}/details`);
+    if (item.type === 'Concert') {
+      router.push(`/concerts/${item.id}/details`);
+    } else if (item.type === 'Restaurant') {
+      router.push(`/restaurants/${item.id}/details`);
+    } else if (item.type === 'Activités') {
+      router.push(`/activites/${item.id}/details`);
+    }
   };
 
   const toggleFavorite = () => {
@@ -31,14 +41,13 @@ export function RestaurantCard({ item }: { item: any }) {
   return (
     <TouchableOpacity onPress={handlePress} style={styles.card}>
       <View>
-        <ImageBackground source={item.image} style={styles.image} />
+        <Image source={item.image} style={styles.image} />
         <View style={styles.ratingBox}>
           <Ionicons name="star" size={16} color="#FFD700" />
           <Text style={styles.ratingText}>{item.rating}</Text>
         </View>
       </View>
 
-      {/* Le cœur reste à la position "saveIcon" */}
       <TouchableOpacity onPress={toggleFavorite} style={styles.saveIcon}>
         <Ionicons
           name={isFav ? 'heart' : 'heart-outline'}
@@ -47,7 +56,6 @@ export function RestaurantCard({ item }: { item: any }) {
         />
       </TouchableOpacity>
 
-      {/* Informations */}
       <View style={styles.infoContainer}>
         <Text style={styles.name}>{item.title}</Text>
         <View style={styles.locationContainer}>
@@ -71,7 +79,7 @@ const styles = StyleSheet.create({
     shadowRadius: 5,
     elevation: 5,
     overflow: 'hidden',
-    marginBottom:10,
+    marginBottom: 10,
   },
   image: {
     width: 230,
