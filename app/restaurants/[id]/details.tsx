@@ -57,7 +57,17 @@ export default function RestaurantDetail() {
         </View>
 
         <Text style={styles.title}>Localisation</Text>
-        <Carte />
+        <Carte
+  points={[
+    {
+      id: restaurant.id,
+      latitude: restaurant.latitude,
+      longitude: restaurant.longitude,
+      title: restaurant.title,
+      description: restaurant.description,
+    },
+  ]}
+/>
       </ScrollView>
 
       <TouchableOpacity

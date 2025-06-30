@@ -16,9 +16,9 @@ import {
 export default function ProfileScreen() {
   const router = useRouter();
 
-  const [name, setName] = useState('John Doe');
+  const [name, setName] = useState('Younes Belmadani');
   const [phone, setPhone] = useState('+212 600-123456');
-  const [email, setEmail] = useState('johndoe@example.com');
+  const [email, setEmail] = useState('test@example.com');
   const [editingField, setEditingField] = useState<string | null>(null);
   const [avatarUri, setAvatarUri] = useState<string | null>(null);
 
@@ -128,7 +128,7 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   changePhoto: {
-    color: '#007AFF',
+    color: 'rgb(204, 96, 7)',
     textAlign: 'center',
     marginTop: 6,
     marginBottom: 20,

@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
   },
   headerTitle: { color: '#fff', fontSize: 18, fontWeight: 'bold' },
   content: { flex: 1, padding: 16 },
-  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 8 },
+  title: { fontSize: 24, fontWeight: 'bold', marginLeft:10,  marginBottom: 8 },
   locationRow: {
     flexDirection: 'row',
     alignItems: 'center',
