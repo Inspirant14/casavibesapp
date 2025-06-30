@@ -1,10 +1,17 @@
-import React, { useState } from 'react';
-import {
-  View, Text, StyleSheet, Image, TouchableOpacity, TextInput, Alert,
-} from 'react-native';
+// app/profile.tsx
 import { Ionicons } from '@expo/vector-icons';
 import * as ImagePicker from 'expo-image-picker';
 import { useRouter } from 'expo-router';
+import React, { useState } from 'react';
+import {
+  Alert,
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View
+} from 'react-native';
 
 export default function ProfileScreen() {
   const router = useRouter();
@@ -17,7 +24,7 @@ export default function ProfileScreen() {
 
   const handleSave = () => {
     setEditingField(null);
-    Alert.alert('Succès', 'Profil mis à jour !');
+    Alert.alert('Succès', 'Profil mis à jour !');
   };
 
   const pickImage = async () => {
@@ -27,7 +34,6 @@ export default function ProfileScreen() {
       aspect: [1, 1],
       quality: 0.7,
     });
-
     if (!result.canceled) {
       setAvatarUri(result.assets[0].uri);
     }
@@ -35,74 +41,78 @@ export default function ProfileScreen() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.heading}>Profil</Text>
+      {/* Contenu principal */}
+      <View style={{ flex: 1 }}>
+        <Text style={styles.heading}>Profil</Text>
 
-      <TouchableOpacity onPress={pickImage}>
-        <Image
-          source={avatarUri ? { uri: avatarUri } : require('../../assets/images/tof.jpg')}
-          style={styles.avatar}
-        />
-        <Text style={styles.changePhoto}>Modifier la photo</Text>
-      </TouchableOpacity>
-
-      {/* Nom */}
-      <View style={styles.row}>
-        <Text style={styles.label}>Nom :</Text>
-        {editingField === 'name' ? (
-          <TextInput style={styles.input} value={name} onChangeText={setName} />
-        ) : (
-          <Text style={styles.value}>{name}</Text>
-        )}
-        <TouchableOpacity onPress={() => setEditingField('name')}>
-          <Ionicons name="pencil" size={20} color="#007AFF" />
+        <TouchableOpacity onPress={pickImage}>
+          <Image
+            source={
+              avatarUri
+                ? { uri: avatarUri }
+                : require('../../assets/images/tof.jpg')
+            }
+            style={styles.avatar}
+          />
+          <Text style={styles.changePhoto}>Modifier la photo</Text>
         </TouchableOpacity>
+
+        {[{ label: 'Nom', value: name, setter: setName, type: 'name' },
+          { label: 'Téléphone', value: phone, setter: setPhone, type: 'phone', keyboard: 'phone-pad' },
+          { label: 'Email', value: email, setter: setEmail, type: 'email', keyboard: 'email-address' }
+        ].map(field => (
+          <View key={field.type} style={styles.row}>
+            <Text style={styles.label}>{field.label} :</Text>
+            {editingField === field.type ? (
+              <TextInput
+                style={styles.input}
+                value={field.value}
+                onChangeText={field.setter}
+                keyboardType={field.keyboard as any}
+              />
+            ) : (
+              <Text style={styles.value}>{field.value}</Text>
+            )}
+            <TouchableOpacity onPress={() => setEditingField(field.type)}>
+              <Ionicons name="pencil" size={20} color="rgb(204, 96, 7)" />
+            </TouchableOpacity>
+          </View>
+        ))}
       </View>
 
-      {/* Téléphone */}
-      <View style={styles.row}>
-        <Text style={styles.label}>Téléphone :</Text>
-        {editingField === 'phone' ? (
-          <TextInput style={styles.input} value={phone} onChangeText={setPhone} keyboardType="phone-pad" />
-        ) : (
-          <Text style={styles.value}>{phone}</Text>
+      {/* Footer avec boutons */}
+      <View style={styles.footer}>
+        {editingField && (
+          <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
+            <Text style={styles.saveButtonText}>Enregistrer</Text>
+          </TouchableOpacity>
         )}
-        <TouchableOpacity onPress={() => setEditingField('phone')}>
-          <Ionicons name="pencil" size={20} color="#007AFF" />
+        <TouchableOpacity
+          style={styles.homeButton}
+          onPress={() => router.push('/(tabs)')}
+        >
+          <Text style={styles.homeButtonText}>Accueil</Text>
         </TouchableOpacity>
+        <TouchableOpacity
+  style={[styles.homeButton, { backgroundColor: '#cc0000', marginTop: 5 }]}
+  onPress={() => {
+    // Ici tu "déconnectes" en resetant la variable locale
+    // et tu rediriges
+    router.replace('/(auth)/login');
+  }}
+>
+  <Text style={styles.homeButtonText}>Se déconnecter</Text>
+</TouchableOpacity>
       </View>
-
-      {/* Email */}
-      <View style={styles.row}>
-        <Text style={styles.label}>Email :</Text>
-        {editingField === 'email' ? (
-          <TextInput style={styles.input} value={email} onChangeText={setEmail} keyboardType="email-address" />
-        ) : (
-          <Text style={styles.value}>{email}</Text>
-        )}
-        <TouchableOpacity onPress={() => setEditingField('email')}>
-          <Ionicons name="pencil" size={20} color="#007AFF" />
-        </TouchableOpacity>
-      </View>
-
-      {editingField && (
-        <TouchableOpacity style={styles.saveButton} onPress={handleSave}>
-          <Text style={styles.saveButtonText}>Enregistrer</Text>
-        </TouchableOpacity>
-      )}
-
-      <TouchableOpacity style={styles.homeButton} onPress={() => router.push('/(tabs)')}>
-        <Text style={styles.homeButtonText}>Accueil</Text>
-      </TouchableOpacity>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 40,
-    backgroundColor: '#fff',
+    backgroundColor: '#D7DCE1', // 👉 fond gris clair
     paddingHorizontal: 20,
   },
   heading: {
@@ -131,6 +141,7 @@ const styles = StyleSheet.create({
   label: {
     width: 90,
     fontWeight: 'bold',
+    
   },
   value: {
     flex: 1,
@@ -140,16 +151,21 @@ const styles = StyleSheet.create({
   input: {
     flex: 1,
     borderBottomWidth: 1,
-    borderColor: '#ccc',
+    borderColor: 'rgba(252, 117, 7, 1)',
     paddingVertical: 2,
     fontSize: 16,
+  },
+  footer: {
+    paddingVertical: 20,
+    borderTopWidth: 1,
+    borderColor: '#ddd',
   },
   saveButton: {
     backgroundColor: '#00aa88',
     padding: 12,
     borderRadius: 8,
     alignItems: 'center',
-    marginTop: 20,
+    marginBottom: 10,
   },
   saveButtonText: {
     color: '#fff',
@@ -157,7 +173,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   homeButton: {
-    marginTop: 20,
     backgroundColor: '#00aaff',
     paddingVertical: 12,
     paddingHorizontal: 24,

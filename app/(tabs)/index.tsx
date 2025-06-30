@@ -2,15 +2,15 @@ import { useFocusEffect } from '@react-navigation/native';
 import React, { useRef, useState, useCallback } from 'react';
 import { Animated, ScrollView, Text, View } from 'react-native';
 
-import { HorizontalActiviteSlider } from '@/components/HorizontalActiviteSlider';
-import { HorizontalConcertSlider } from '@/components/HorizontalConcertSlider';
-import { HorizontalMixedSlider } from '@/components/HorizontalMixedSlider';
-import { HorizontalRestaurantSlider } from '@/components/HorizontalRestaurantSlider';
-import { ActivitePreview } from '@/components/ActivitePreview';
-import { Carte } from '@/components/Carte';
-import { ConcertPreview } from '@/components/ConcertPreview';
-import { RestaurantPreview } from '@/components/RestaurantPreview';
-import { styles } from '@/constants/HomeStyles';
+import { HorizontalActiviteSlider } from '../../components/HorizontalActiviteSlider';
+import { HorizontalConcertSlider } from '../../components/HorizontalConcertSlider';
+import { HorizontalMixedSlider } from '../../components/HorizontalMixedSlider';
+import { HorizontalRestaurantSlider } from '../../components/HorizontalRestaurantSlider';
+import { ActivitePreview } from '../../components/ActivitePreview';
+import { Carte } from '../../components/Carte';
+import { ConcertPreview } from '../../components/ConcertPreview';
+import { RestaurantPreview } from '../../components/RestaurantPreview';
+import { styles } from '../../constants/HomeStyles';
 
 import {
   otherActivites,
@@ -19,7 +19,7 @@ import {
   topActivites,
   topConcerts,
   topRestaurants,
-} from '@/constants/data/restaurants';
+} from '../../constants/data/restaurants';
 
 export default function HomeScreen() {
   const [selectedCategory] = useState<string | null>('Tout');

@@ -10,9 +10,9 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { topActivites, otherActivites, Activite } from '@/constants/data/restaurants';
-import { Carte } from '@/components/Carte';
-import { styles } from '@/constants/detailsColor';
+import { topActivites, otherActivites, Activite } from '../../../constants/data/restaurants';
+import { Carte } from '../../../components/Carte';
+import { styles } from '../../../constants/detailsColor';
 
 export default function ActiviteDetail() {
   const { id } = useLocalSearchParams<{ id: string }>();

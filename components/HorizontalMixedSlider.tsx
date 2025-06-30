@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FlatList } from 'react-native';
-import { EventItem } from '@/constants/data/restaurants';
+import { EventItem } from '../constants/data/restaurants';
 import { MixedCard } from './MixedCard';
 
 interface Props {

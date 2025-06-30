@@ -1,6 +1,6 @@
-import { HorizontalRestaurantSlider } from '@/components/HorizontalRestaurantSlider';
-import { SearchBar } from '@/components/SearchBar';
-import { topRestaurants } from '@/constants/data/restaurants';
+import { HorizontalRestaurantSlider } from '../components/HorizontalRestaurantSlider';
+import { SearchBar } from '../components/SearchBar';
+import { topRestaurants } from '../constants/data/restaurants';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { RestaurantList } from '../components/RestaurantList';

@@ -1,6 +1,6 @@
-import { HorizontalActiviteSlider } from '@/components/HorizontalActiviteSlider';
-import { SearchBar } from '@/components/SearchBar';
-import { topActivites } from '@/constants/data/restaurants';
+import { HorizontalActiviteSlider } from '../components/HorizontalActiviteSlider';
+import { SearchBar } from '../components/SearchBar';
+import { topActivites } from '../constants/data/restaurants';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { ActiviteList } from '../components/ActiviteList';

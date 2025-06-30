@@ -1,15 +1,15 @@
-import { Categorie } from '@/components/Categorie';
-import { HorizontalActiviteSlider } from '@/components/HorizontalActiviteSlider';
-import { HorizontalConcertSlider } from '@/components/HorizontalConcertSlider';
-import { SearchBar } from '@/components/SearchBar';
+import { Categorie } from '../../components/Categorie';
+import { HorizontalActiviteSlider } from '../../components/HorizontalActiviteSlider';
+import { HorizontalConcertSlider } from '../../components/HorizontalConcertSlider';
+import { SearchBar } from '../../components/SearchBar';
 import React, { useState } from 'react';
 import { ScrollView, Text } from 'react-native';
 import { ActivitePreview } from '../../components/ActivitePreview';
 import { ConcertPreview } from '../../components/ConcertPreview';
 import { HorizontalMixedSlider } from '../../components/HorizontalMixedSlider';
 import { RestaurantPreview } from '../../components/RestaurantPreview';
-import { HorizontalRestaurantSlider } from '@/components/HorizontalRestaurantSlider';
-import { styles } from '@/constants/HomeStyles';
+import { HorizontalRestaurantSlider } from '../../components/HorizontalRestaurantSlider';
+import { styles } from '../../constants/HomeStyles';
 import {
   otherActivites,
   otherConcerts,
@@ -68,12 +68,12 @@ const filteredNoActivites = selectedCategory === 'Tout'
   return (
     <ScrollView style={{ flex: 1 }}>
       <Text style={{ fontSize: 24, fontWeight: 'bold', margin: 16 }}>
-        Que voulez-vous faire today ?
+        Profitez de nos offres
       </Text>
       <SearchBar onSearch={setSearchTerm} />
 
       <Categorie onFilter={setSelectedCategory} />
-      <Text style={styles.minititle}>Evenement a la une</Text>
+      <Text style={styles.minititle}>Evenement à la une</Text>
      
 
       {selectedCategory === 'Tout' && (

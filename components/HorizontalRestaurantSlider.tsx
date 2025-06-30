@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FlatList } from 'react-native';
 import { RestaurantCard } from './RestaurantCard';
-import { Restaurant } from '@/constants/data/restaurants';
+import { Restaurant } from '../constants/data/restaurants';
 
 // interface Restaurant {
 //   id: string;

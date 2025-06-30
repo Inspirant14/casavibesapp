@@ -1,5 +1,5 @@
 // components/HorizontalRestaurantSlider.tsx
-import { Activite } from '@/constants/data/restaurants';
+import { Activite } from '../constants/data/restaurants';
 import React, { useEffect, useRef, useState } from 'react';
 import { FlatList } from 'react-native';
 import { ActiviteCard } from './ActiviteCard';

@@ -1,6 +1,6 @@
-import { Carte } from '@/components/Carte';
-import { Concert, otherConcerts, topConcerts } from '@/constants/data/restaurants';
-import { styles } from '@/constants/detailsColor';
+import { Carte } from '../../../components/Carte';
+import { Concert, otherConcerts, topConcerts } from '../../../constants/data/restaurants';
+import { styles } from '../../../constants/detailsColor';
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React from 'react';

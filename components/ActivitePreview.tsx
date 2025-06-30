@@ -1,6 +1,6 @@
 
 // components/ActivitePreview.tsx
-import { styles } from '@/constants/previewColor';
+import { styles } from '../constants/previewColor';
 import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import React from 'react';

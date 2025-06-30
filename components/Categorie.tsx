@@ -4,8 +4,8 @@ import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 const categories = [
   { id: '1', title: 'Tout' },
   { id: '2', title: 'Restaurant' },
-  { id: '3', title: 'Concert' },
-  { id: '4', title: 'Activités' },
+  // { id: '3', title: 'Concert' },
+  { id: '3', title: 'Activités' },
 ];
 
 export function Categorie({ onFilter }: { onFilter: (title: string) => void }) {

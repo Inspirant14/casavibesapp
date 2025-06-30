@@ -1,12 +1,12 @@
 // screens/AllRestaurants.tsx
-import { HorizontalConcertSlider } from '@/components/HorizontalConcertSlider';
+import { HorizontalConcertSlider } from '../components/HorizontalConcertSlider';
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 // import { otherRestaurants } from '../constants/data/restaurants';
 // import { Ionicons } from '@expo/vector-icons';
-import { SearchBar } from '@/components/SearchBar';
+import { SearchBar } from '../components/SearchBar';
 import { ConcertList } from '../components/ConcertList';
-import { topConcerts } from '@/constants/data/restaurants';
+import { topConcerts } from '../constants/data/restaurants';
 // import { allRestaurants } from '@/constants/data/restaurants';
 
 

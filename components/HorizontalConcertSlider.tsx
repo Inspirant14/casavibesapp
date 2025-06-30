@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { FlatList } from 'react-native';
 import { ConcertCard } from './ConcertCard';
-import { Concert } from '@/constants/data/restaurants';
+import { Concert } from '../constants/data/restaurants';
 
 // interface Concert {
 //   id: string;

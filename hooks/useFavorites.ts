@@ -1,45 +1,41 @@
-import { useState, useEffect } from 'react';
+// hooks/useFavorites.ts
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState} from 'react';
+import { useFocusEffect } from 'expo-router';
+import React from 'react';
 
-const FAVORITES_KEY = 'favorites';
+const STORAGE_KEY = 'FAV_IDS';
 
-export const useFavorites = () => {
+export function useFavorites() {
   const [favorites, setFavorites] = useState<string[]>([]);
 
-  useEffect(() => {
-    const loadFavorites = async () => {
-      try {
-        const storedFavorites = await AsyncStorage.getItem(FAVORITES_KEY);
-        if (storedFavorites) {
-          setFavorites(JSON.parse(storedFavorites));
-        }
-      } catch (error) {
-        console.error('Erreur lors du chargement des favoris:', error);
-      }
-    };
+  const loadFavorites = async () => {
+    const json = await AsyncStorage.getItem(STORAGE_KEY);
+    setFavorites(json ? JSON.parse(json) : []);
+  };
 
+  useEffect(() => {
     loadFavorites();
   }, []);
 
-  const addFavorite = async (id: string) => {
-    try {
-      const updatedFavorites = [...favorites, id];
-      await AsyncStorage.setItem(FAVORITES_KEY, JSON.stringify(updatedFavorites));
-      setFavorites(updatedFavorites);
-    } catch (error) {
-      console.error('Erreur lors de l\'ajout aux favoris:', error);
-    }
+  useFocusEffect(
+    React.useCallback(() => {
+      loadFavorites();
+    }, [])
+  );
+
+  const save = (newFav: string[]) => {
+    setFavorites(newFav);
+    AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(newFav));
   };
 
-  const removeFavorite = async (id: string) => {
-    try {
-      const updatedFavorites = favorites.filter(fav => fav !== id);
-      await AsyncStorage.setItem(FAVORITES_KEY, JSON.stringify(updatedFavorites));
-      setFavorites(updatedFavorites);
-    } catch (error) {
-      console.error('Erreur lors du retrait des favoris:', error);
-    }
+  const addFavorite = (id: string) => {
+    if (!favorites.includes(id)) save([...favorites, id]);
   };
 
-  return { favorites, addFavorite, removeFavorite };
-};
+  const removeFavorite = (id: string) => {
+    save(favorites.filter(f => f !== id));
+  };
+
+  return { favorites, addFavorite, removeFavorite, loadFavorites };
+}

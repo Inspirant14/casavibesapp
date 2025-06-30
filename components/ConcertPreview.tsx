@@ -5,7 +5,7 @@ import React from 'react';
 import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import { useFavorites } from '../hooks/useFavorites';
 import { Concert } from '../constants/data/restaurants';
-import { styles } from '@/constants/previewColor';
+import { styles } from '../constants/previewColor';
 
 interface Props {
   concerts: Concert[];

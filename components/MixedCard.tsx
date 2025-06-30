@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { EventItem } from '@/constants/data/restaurants';
+import { EventItem } from '../constants/data/restaurants';
 
 interface Props {
   item: EventItem;
